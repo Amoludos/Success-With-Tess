@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<!--
+    Success With Tess
+    Author: Shawn Daly
+    Filename: SWT_Template.html
+   -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="utf-8" />
+   <meta name = "keywords" content = "Life Coach, Coach, Life, Tess, Harandra, Job, Career, Kids, Marriage, Divorce, 
+      Parenting, Personal, Professional, Abuse, Abusive, Success, Advancement" />
+   <meta name = "description" content = "Talking To Tess Harandra" />
+   <link href="SWT_Styles.css" rel="stylesheet"  />
+   <link href="SWT_Layout.css" rel="stylesheet"  />
+   <script src="SWT_Script.js" defer></script>
+   <title>Talking To Tess</title> 
+
+<script type="text/javascript">
+    function validateName() {
+
+      var name = document.getElementById('name').value;
+
+      if(name.length == 0) {
+
+        producePrompt('Name is required', 'name-error' , 'red')
+        return false;
+    }
+
+    if (!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
+
+        producePrompt('First and last name, please.','name-error', 'red');
+        return false;
+
+    }
+
+    producePrompt('Valid Name', 'name-error', 'green');
+    return true;
+
+}
+
+function validatePhone() {
+
+  var phone = document.getElementById('phone').value;
+
+  if(phone.length == 0) {
+      producePrompt('Phone number is required.', 'phone-error', 'red');
+      return false;
+  }
+
+  if(!phone.match(/^[0-9]{10}$/)) {
+      producePrompt('Only digits, please.' ,'phone-error', 'red');
+      return false;
+  }
+  
+    if(phone.length != 10) {
+      producePrompt('Include area code.', 'phone-error', 'red');
+      return false;
+  }
+
+  producePrompt('Phone Valid', 'phone-error', 'green');
+  return true;
+
+}
+
+function validateForm() {
+  if (!validateName() || !validatePhone()) {
+    producePrompt('Please fix errors to submit.', 'submit-error', 'red');
+    return false;
+	}
+	else {
+	var name = document.getElementById('name').value;
+	var phone = document.getElementById('phone').value;
+	var message = 'My name is ' + name + ' and I would like to talk with you, Tess!  Please call me back at ' + phone + ' when you have a chance!'
+	window.open('mailto:test@test.com?subject' + '=' + 'Please Call Me Back Tess!' + '&body' + '=' + message);
+	document.getElementById('name').value = "Thank You For Your Submission!";
+	document.getElementById('phone').value = "Tess Will Be In Touch!";
+	producePrompt(null, 'name-error', 'green');
+	producePrompt(null, 'phone-error', 'green');
+	producePrompt(null, 'submit-error', 'green');
+	return true;
+	}
+}
+
+function producePrompt(message, promptLocation, color) {
+
+  document.getElementById(promptLocation).innerHTML = message;
+  document.getElementById(promptLocation).style.color = color;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+   <header>
+   <div>
+   <a href="Index.html"><img class="Logo" id="Logo" src="SWT_Logo2.png" alt="Success With Tess Logo"  /></a>
+   <img class="Banner" src="SWT_Banner.png" alt="Success With Tess"  />
+   <div id="Quote">
+      <p id="QuoteP">
+	     <quote>"Success is the sum of small efforts, repeated day-in and day-out."</quote>
+      </p>
+   </div>
+   </div>
+   </header>
+   
+   <section id="leftcol">
+      <nav>
+         <ul>
+            <li><a href="Index.html">Success With Tess</a></li>
+            <li><a href="WhoIsTess.html">Who Is Tess</a></li>
+            <li><a href="HowTessCanHelp.html">How Tess Can Help</a></li>
+            <li id="CurrentPage"><a href="TalkingToTess.html">Contact Tess</a></li>
+         </ul>
+      </nav>
+	  <div id="Main">
+	     <div id="Talking">
+		    <nav id="Selector">
+			   <ul>
+			      <li id="Current"><a href="#">The Cost Of Success</a></li>
+				  <li id="Background"><a href="#">Talk To Tess</a></li>
+			   </ul>
+			</nav>
+		    <div id="Primary">
+			   <p>
+			   Looking to achieve Success With Tess?  Book her for private coaching and receive:<br  />
+			   &#9702; Three 30-minute or Two 45-minute coaching sessions  <br  />
+			   &#9702; Unlimited email support  <br  /><br  />
+			   Achieving Success With Tess will only cost $275 a month!  Plus, book Tess with a long-term
+			   retainer and receive a discount!<br  />
+			   &#9702; 6 month pre-paid retainer - 10% off monthly fees   <br  />
+			   &#9702; 9 month pre-paid retainer - 15% off monthly fees   <br  />
+			   &#9702; 12 month pre-paid retainer - 20% off monthly fees  <br  />
+			   </p>
+			   <img id="Talking" src="Success4.png" alt="Motivate"/>
+			</div>
+			
+			<div id="Secondary">
+			<img id="Talking2" src="tess6.jpg" alt="Tess Harandra"/>
+			   <p>
+			   Join Tess in an empowering journey where you take the driver’s seat, allowing her to be 
+			   your navigator. With teamwork, you will get to your destination. Together, you and Tess will
+			   have coaching conversations of discovery, insight, and ACTION! Call now to book your complementary
+			   mini-coaching or Q/A session!
+			   </p>
+			   <h1><a href="tel:1-800-782-2377">1-800-SUCCESS</a></h1>
+			</div>
+			
+
+			<form id="Contact" method="post" enctype="text/plain" name="EmailForm">
+			<p>Want Tess to call you instead?  Just fill out your name and phone number below and Tess will call you as soon as she can!</p><br  />
+		        <input type="text" id="name" placeholder="Who Are You?" onkeyup='validateName()' required /><span class='error-message' id='name-error'></span>
+				<input type="tel" id="phone" placeholder="Your Phone Number?" onkeyup='validatePhone()' required /><span class='error-message' id='phone-error'></span>
+				<input class="button" type="button" value="Send" onclick='return validateForm()' /><span class='error-message' id='submit-error'></span>
+			</form>
+	     </div>
+	  </div>
+   </section>
+   
+   <section id="rightcol">
+   <div>
+      <nav><img src="TESS-timonials.png" alt="TESS-timonials"  /></nav>
+	<blockquote>
+      For me the simplest way to look at Tess's coaching abilities is to look at my life before our
+	  conversations and after. I did the work, anyone coached does the work, but with questions she
+	  exploded a lot of limiting assumptions which were impacting my motivation to live the life I
+	  wanted to live. <br  /><br  />
+	  If you don't feel free... then what is freedom worth to you? I couldn't answer that question
+	  when I started; I forgot what it was like to feel free, not sure if I ever really was before.
+	  But now that I have that freedom within, I know that it's worth any price to have, and to preserve,
+	  I'd never go back to the way I was living ever again.
+      </blockquote>
+      <p id="Name"> ~ J.R., Renews, NL </p>
+   </div>
+   </section>
+   
+   <footer>
+   <p>
+      <em>Success With Tess</em> &#9702;
+      St. John's, NL &#9702;
+      1-800-SUCCESS
+   </p>
+   </footer>
+</body>
+</html>
